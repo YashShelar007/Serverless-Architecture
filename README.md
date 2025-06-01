@@ -47,8 +47,6 @@ serverless-api/
    Hello from Yash’s first GCP function!
    ```
 
-````
-
 2. **GET /users**
    Returns:
 
@@ -210,5 +208,3 @@ To automate just the `hello_world` function:
    ```
 
 ---
-
-````
