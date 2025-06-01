@@ -1,0 +1,22 @@
+# deployment-manager/deployment.yaml
+
+resources:
+  # 1. Package the source code (hello) into a GCS bucket first, so it can be pulled by Deployment Manager.
+  #    For MVP, we assume you've manually uploaded a .zip of the functions/hello folder to GCS.
+  #    Example: gs://YOUR_BUCKET_NAME/hello_source.zip
+
+  - name: hello-function
+    type: gcp-types/cloudfunctions-v1:projects.locations.functions
+    properties:
+      parent: projects/severless-architecture/locations/us-central1
+      function: hello_world
+      description: "Hello World 1st-gen Function"
+      runtime: python311
+      entryPoint: hello_world
+      httpsTrigger: {} # Create an HTTP trigger
+      sourceArchiveUrl: gs://serverless-api-hello-bucket/hello_source.zip
+      availableMemoryMb: 256
+      timeout: "60s"
+      labels:
+        env: "mvp"
+      # Set `availableMemoryMb` or other properties if desired

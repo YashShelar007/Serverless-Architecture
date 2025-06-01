@@ -1,0 +1,2 @@
+# functions/stats/requirements.txt
+# (no extra dependencies needed for this simple example)

@@ -1,0 +1,37 @@
+# apigateway/api-config.yaml
+swagger: "2.0"
+info:
+  title: serverless-api
+  description: >
+    This API Gateway routes paths /hello, /users, /stats
+    to the respective Cloud Functions.
+  version: "1.0.0"
+
+# Each path maps to a specific Cloud Function HTTPS URL:
+paths:
+  /hello:
+    get:
+      operationId: hello
+      x-google-backend:
+        address: https://us-central1-severless-architecture.cloudfunctions.net/hello_world
+      responses:
+        "200":
+          description: "Hello endpoint"
+
+  /users:
+    get:
+      operationId: get_users
+      x-google-backend:
+        address: https://us-central1-severless-architecture.cloudfunctions.net/get_users
+      responses:
+        "200":
+          description: "Returns static users list"
+
+  /stats:
+    get:
+      operationId: get_stats
+      x-google-backend:
+        address: https://us-central1-severless-architecture.cloudfunctions.net/get_stats
+      responses:
+        "200":
+          description: "Returns static stats"
